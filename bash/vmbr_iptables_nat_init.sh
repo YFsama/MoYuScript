@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#添加網卡
 echo "
 
 auto vmbr1
@@ -25,6 +26,7 @@ net.ipv6.conf.all.proxy_ndp = 1
 net.ipv6.conf.all.accept_ra = 2
 " > /etc/sysctl.conf
 
+sysctl -p
 # IPtable初始化 保存
 iptables -t nat -A POSTROUTING -s '172.24.31.0/24' -o vmbr0 -j MASQUERADE
 
