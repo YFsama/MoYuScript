@@ -106,6 +106,16 @@ curl http://bash.rbq.sh/bash/get_composer_cn.sh | bash
 ~~~
 
 
+### 配置系统模板基础
+
+让纯净的系统安装一些软件+支持各种云
+
+~~~bash
+#wget
+wget -O - http://bash.rbq.sh/bash/cloudinit_install.sh | bash
+#curl
+curl http://bash.rbq.sh/bash/cloudinit_install.sh | bash
+~~~
 
 ## 需配置脚本
 
