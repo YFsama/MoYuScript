@@ -30,7 +30,7 @@ iface ${int} inet static
 	bridge-fd 0
 " >> /etc/network/interfaces
 
-ifup vmbr1
+ifup ${int}
 
 # 開啓IP轉發
 echo "
@@ -48,14 +48,15 @@ sysctl -p
 # IPtable初始化 保存
 iptables -t nat -A POSTROUTING -s ${net} -o vmbr0 -j MASQUERADE
 
-touch /etc/network/if-pre-up.d/iptables
+apt install -y iptables-persistent
 
-echo "
-#!/bin/sh
-/sbin/iptables-restore < /etc/iptables
-" > /etc/network/if-pre-up.d/iptables
+#开启嵌套虚拟化
+modprobe -r kvm_intel
+modprobe kvm_intel nested=1
+echo "options kvm_intel nested=1" >> /etc/modprobe.d/modprobe.conf
 
-chmod +x /etc/network/if-pre-up.d/iptables
 
-iptables-save > /etc/iptables
+echo "deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription " >> /etc/apt/sources.list.d/pve-no-sub.list
 
+# 注释掉企业源
+echo "#deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise" >  /etc/apt/sources.list.d/pve-enterprise.list
