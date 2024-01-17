@@ -27,7 +27,7 @@ systemctl enable qemu-guest-agent || chkconfig qemu-ga on
 
 #写MOTD
 echo "
-Welcome to Next-Generation MercyCloud Service !
+Welcome back! Master
 " > /etc/motd
 
 #删除记录
@@ -40,4 +40,4 @@ echo > ~/.bash_history
 history -c
 
 rm ~/anaconda-ks.cfg 
-rm moyu.sh
+rm cloudinit_install.sh

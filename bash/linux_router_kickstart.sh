@@ -99,12 +99,10 @@ net.ipv6.conf.all.keep_addr_on_down=1
 
 # MPLS
 
-
 net.mpls.conf.lo.input=1
 net.mpls.conf.dummy0.input=1
 
 net.mpls.platform_labels=1048575
-
 
 " >> /etc/sysctl.conf
 

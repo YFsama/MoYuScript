@@ -1,10 +1,28 @@
 # MoYu脚本
 
+## 网络相关摸鱼脚本
 
+### 安装GOBGP（AMD64默认）
+
+```
+#wget
+wget -O - https://bash.rbq.sh/bash/gobgp.sh | bash
+#curl
+curl https://bash.rbq.sh/bash/gobgp.sh | bash
+```
+
+### Linux路由器起始配置
+
+开启MPLS，安装FRR（附加RPKI，启用常用的路由协议 ）及BGPQ4，在/root目录放一个开机启动文件
+
+```
+#wget
+wget -O - https://bash.rbq.sh/bash/linux_router_kickstart.sh | bash
+#curl
+curl https://bash.rbq.sh/bash/linux_router_kickstart.sh | bash
+```
 
 ## Proxmox配置摸鱼脚本
-
-
 
 
 ### 配置NAT网卡+DHCP
@@ -15,24 +33,20 @@
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/pve5_nat_dog.sh | bash
+wget -O - https://bash.rbq.sh/bash/pve5_nat_dog.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/pve5_nat_dog.sh | bash
+curl https://bash.rbq.sh/bash/pve5_nat_dog.sh | bash
 ~~~
-
-
 
 #### PVE6
 
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/pve6_nat_dog.sh | bash
+wget -O - https://bash.rbq.sh/bash/pve6_nat_dog.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/pve6_nat_dog.sh | bash
+curl https://bash.rbq.sh/bash/pve6_nat_dog.sh | bash
 ~~~
-
-
 
 ### 中科大PVE更新源
 
@@ -40,9 +54,9 @@ curl http://bash.rbq.sh/bash/pve6_nat_dog.sh | bash
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/pve6_non_ustc_cn_source.sh | bash
+wget -O - https://bash.rbq.sh/bash/pve6_non_ustc_cn_source.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/pve6_non_ustc_cn_source.sh | bash
+curl https://bash.rbq.sh/bash/pve6_non_ustc_cn_source.sh | bash
 ~~~
 
 
@@ -52,9 +66,9 @@ curl http://bash.rbq.sh/bash/pve6_non_ustc_cn_source.sh | bash
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/pve6_non_tuna_cn_source.sh | bash
+wget -O - https://bash.rbq.sh/bash/pve6_non_tuna_cn_source.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/pve6_non_tuna_cn_source.sh | bash
+curl https://bash.rbq.sh/bash/pve6_non_tuna_cn_source.sh | bash
 ~~~
 
 ### 配置NAT网卡
@@ -63,9 +77,9 @@ curl http://bash.rbq.sh/bash/pve6_non_tuna_cn_source.sh | bash
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/vmbr_iptables_nat_init.sh | bash
+wget -O - https://bash.rbq.sh/bash/vmbr_iptables_nat_init.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/vmbr_iptables_nat_init.sh | bash
+curl https://bash.rbq.sh/bash/vmbr_iptables_nat_init.sh | bash
 ~~~
 
 ### PVE习惯性配置
@@ -74,9 +88,9 @@ YF平时习惯性给PVE的一些配置
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/pve_cn_init.sh | bash
+wget -O - https://bash.rbq.sh/bash/pve_cn_init.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/pve_cn_init.sh | bash
+curl https://bash.rbq.sh/bash/pve_cn_init.sh | bash
 ~~~
 
 
@@ -89,9 +103,9 @@ Ubuntu WDNMD（就因为ufw搞定咱排查了半天
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/ufw_ospf.sh | bash
+wget -O - https://bash.rbq.sh/bash/ufw_ospf.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/ufw_ospf.sh | bash
+curl https://bash.rbq.sh/bash/ufw_ospf.sh | bash
 ~~~
 
 ### 安装作曲家
@@ -100,9 +114,9 @@ curl http://bash.rbq.sh/bash/ufw_ospf.sh | bash
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/get_composer_cn.sh | bash
+wget -O - https://bash.rbq.sh/bash/get_composer_cn.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/get_composer_cn.sh | bash
+curl https://bash.rbq.sh/bash/get_composer_cn.sh | bash
 ~~~
 
 
@@ -112,9 +126,9 @@ curl http://bash.rbq.sh/bash/get_composer_cn.sh | bash
 
 ~~~bash
 #wget
-wget -O - http://bash.rbq.sh/bash/cloudinit_install.sh | bash
+wget -O - https://bash.rbq.sh/bash/cloudinit_install.sh | bash
 #curl
-curl http://bash.rbq.sh/bash/cloudinit_install.sh | bash
+curl https://bash.rbq.sh/bash/cloudinit_install.sh | bash
 ~~~
 
 ## 需配置脚本
@@ -125,7 +139,7 @@ curl http://bash.rbq.sh/bash/cloudinit_install.sh | bash
 
 ~~~bash
 #wget
-wget http://bash.rbq.sh/bash/pull_code.sh
+wget https://bash.rbq.sh/bash/pull_code.sh
 ~~~
 
 ### 自动拉代码
@@ -134,5 +148,5 @@ wget http://bash.rbq.sh/bash/pull_code.sh
 
 ~~~bash
 #wget
-wget http://bash.rbq.sh/bash/pull_code.sh
+wget https://bash.rbq.sh/bash/pull_code.sh
 ~~~
