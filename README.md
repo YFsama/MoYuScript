@@ -18,7 +18,7 @@ YFsama日常配置一些環境時使用的命令
 
 怎么食用？
 
-Bash脚本写了用法的可以在 https://bash.rbq.sh/bash 看到
+Bash脚本写了用法的可以在 [Bash目录](https://bash.rbq.sh/bash) 可以看到
 
 没写用法的自己看名字看代码吧
 
