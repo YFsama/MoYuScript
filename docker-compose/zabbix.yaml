@@ -1,0 +1,92 @@
+version: '3'
+
+services:
+  zabbix-web-nginx-mysql:
+    image: zabbix/zabbix-web-nginx-mysql:alpine-trunk
+    restart: always
+    environment:
+      - DB_SERVER_HOST=zabbix-mysql
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix
+      - MYSQL_ROOT_PASSWORD=cUR9CG5fPS5JSSTb
+      - ZBX_SERVER_HOST=zabbix-server-mysql
+    ports:
+      - 8080:8080
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /data/zabbix/fonts/DejaVuSans.ttf:/usr/share/zabbix/assets/fonts/DejaVuSans.ttf
+    networks:
+      - zbx_net
+    depends_on:
+      - zabbix-server-mysql
+      - zabbix-mysql
+  zabbix-mysql:
+    image: mysql:8.0.37
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix
+      - MYSQL_ROOT_PASSWORD=cUR9CG5fPS5JSSTb
+    command:
+      - mysqld
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8
+      - --collation-server=utf8_bin
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /data/zabbix/db:/var/lib/mysql
+    networks:
+      - zbx_net
+  zabbix-java-gateway:
+    image: zabbix/zabbix-java-gateway:alpine-trunk
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+    networks:
+      - zbx_net
+  zabbix-server-mysql:
+    image: zabbix/zabbix-server-mysql:alpine-trunk
+    restart: always
+    volumes:
+      - zabbix-server-vol:/etc/zabbix
+      - /data/zabbix/alertscripts:/usr/lib/zabbix/alertscripts
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 10051:10051
+    environment:
+      - DB_SERVER_HOST=zabbix-mysql
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix
+      - MYSQL_ROOT_PASSWORD=cUR9CG5fPS5JSSTb
+      - ZBX_JAVAGATEWAY=zabbix-java-gateway
+      - ZBX_JAVAGATEWAY_ENABLE=true
+      - ZBX_JAVAGATEWAYPORT=10052
+      - ZBX_CACHESIZE=8G
+      - ZBX_WMWARECACHESIZE=4G
+    depends_on:
+      - zabbix-mysql
+    networks:
+      - zbx_net
+  zabbix-agent:
+    image: zabbix/zabbix-agent:alpine-trunk
+    restart: always
+    ports:
+      - 10050:10050
+    environment:
+      - ZBX_HOSTNAME=Zabbix server
+      - ZBX_SERVER_HOST=zabbix-server-mysql
+      - ZBX_SERVER_PORT=10051
+    networks:
+      - zbx_net
+
+networks:
+  zbx_net:
+    driver: bridge
+
+volumes:
+  zabbix-server-vol:
