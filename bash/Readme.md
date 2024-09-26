@@ -24,6 +24,16 @@ curl https://bash.rbq.sh/bash/linux_router_kickstart.sh | bash
 
 ## Proxmox配置摸鱼脚本
 
+### 引入模版
+
+~~~bash
+#wget
+wget -O - https://bash.rbq.sh/bash/pve-import-template.sh | bash
+#curl
+curl https://bash.rbq.sh/bash/pve-import-template.sh | bash
+~~~
+
+Thanks: https://github.com/balthild/pve-import-template
 
 ### 配置NAT网卡+DHCP
 
